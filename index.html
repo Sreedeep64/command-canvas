@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Command Canvas is a friendly terminal practice dashboard with searchable commands, a progress checklist, and a safe command simulator."
+    />
+    <title>Command Canvas — Terminal Practice Dashboard</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="Command Canvas home">
+        <span class="brand-mark" aria-hidden="true">$_</span>
+        <span>Command Canvas</span>
+      </a>
+      <nav aria-label="Primary navigation">
+        <a href="#commands">Commands</a>
+        <a href="#practice">Practice</a>
+        <a href="#progress">Progress</a>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section class="hero" id="top">
+        <div class="hero-copy">
+          <p class="eyebrow">Terminal practice, without the pressure</p>
+          <h1>A calmer way to learn the command line.</h1>
+          <p class="hero-intro">
+            Keep the commands you use most in one place, practise them safely,
+            and track each small win as you build confidence.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#practice">Try the practice terminal</a>
+            <a class="button button-secondary" href="#commands">Browse commands</a>
+          </div>
+          <dl class="hero-stats" aria-label="Dashboard summary">
+            <div><dt>12</dt><dd>useful commands</dd></div>
+            <div><dt>5</dt><dd>practice steps</dd></div>
+            <div><dt>0</dt><dd>risky operations</dd></div>
+          </dl>
+        </div>
+
+        <div class="terminal-card" aria-label="Example terminal window">
+          <div class="terminal-bar">
+            <span class="window-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span>~/projects/command-canvas</span>
+          </div>
+          <div class="terminal-body" aria-hidden="true">
+            <p><span class="prompt">$</span> pwd</p>
+            <p class="output">/Users/you/projects/command-canvas</p>
+            <p><span class="prompt">$</span> git status</p>
+            <p class="output good">On branch main<br />nothing to commit, working tree clean</p>
+            <p><span class="prompt">$</span> vercel</p>
+            <p class="output">Preview ready at command-canvas.vercel.app</p>
+            <p class="cursor-line"><span class="prompt">$</span> <span class="cursor"></span></p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="commands" aria-labelledby="commands-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Quick reference</p>
+            <h2 id="commands-title">Find the command you need.</h2>
+          </div>
+          <label class="search-field">
+            <span class="sr-only">Search commands</span>
+            <input id="command-search" type="search" placeholder="Search by command or purpose" autocomplete="off" />
+          </label>
+        </div>
+
+        <div class="filter-row" role="group" aria-label="Filter commands by category">
+          <button class="filter active" type="button" data-filter="all" aria-pressed="true">All</button>
+          <button class="filter" type="button" data-filter="navigate" aria-pressed="false">Navigate</button>
+          <button class="filter" type="button" data-filter="git" aria-pressed="false">Git</button>
+          <button class="filter" type="button" data-filter="node" aria-pressed="false">Node</button>
+          <button class="filter" type="button" data-filter="deploy" aria-pressed="false">Deploy</button>
+        </div>
+
+        <div class="command-grid" id="command-grid">
+          <article class="command-card" data-category="navigate" data-search="pwd current folder directory">
+            <span class="tag">Navigate</span><h3><code>pwd</code></h3>
+            <p>Show the full path of the folder you are currently in.</p>
+            <button class="copy-button" type="button" data-copy="pwd">Copy</button>
+          </article>
+          <article class="command-card" data-category="navigate" data-search="ls list files folders">
+            <span class="tag">Navigate</span><h3><code>ls</code></h3>
+            <p>List the files and folders in your current location.</p>
+            <button class="copy-button" type="button" data-copy="ls">Copy</button>
+          </article>
+          <article class="command-card" data-category="navigate" data-search="cd change directory folder">
+            <span class="tag">Navigate</span><h3><code>cd folder-name</code></h3>
+            <p>Move into another folder. Use <code>cd ..</code> to go back one level.</p>
+            <button class="copy-button" type="button" data-copy="cd folder-name">Copy</button>
+          </article>
+          <article class="command-card" data-category="git" data-search="git status changes branch clean">
+            <span class="tag">Git</span><h3><code>git status</code></h3>
+            <p>Check your branch and see which files have changed.</p>
+            <button class="copy-button" type="button" data-copy="git status">Copy</button>
+          </article>
+          <article class="command-card" data-category="git" data-search="git pull download remote updates">
+            <span class="tag">Git</span><h3><code>git pull</code></h3>
+            <p>Bring the newest changes from GitHub into your local folder.</p>
+            <button class="copy-button" type="button" data-copy="git pull">Copy</button>
+          </article>
+          <article class="command-card" data-category="git" data-search="git add stage files changes">
+            <span class="tag">Git</span><h3><code>git add .</code></h3>
+            <p>Stage the changes in your current project for the next commit.</p>
+            <button class="copy-button" type="button" data-copy="git add .">Copy</button>
+          </article>
+          <article class="command-card" data-category="git" data-search="git commit save version message">
+            <span class="tag">Git</span><h3><code>git commit -m "message"</code></h3>
+            <p>Save a named version of your staged changes.</p>
+            <button class="copy-button" type="button" data-copy="git commit -m &quot;Describe the change&quot;">Copy</button>
+          </article>
+          <article class="command-card" data-category="git" data-search="git push upload github changes">
+            <span class="tag">Git</span><h3><code>git push</code></h3>
+            <p>Send your local commits to the connected GitHub repository.</p>
+            <button class="copy-button" type="button" data-copy="git push">Copy</button>
+          </article>
+          <article class="command-card" data-category="node" data-search="npm install dependencies packages">
+            <span class="tag">Node</span><h3><code>npm install</code></h3>
+            <p>Install the packages listed by a Node project.</p>
+            <button class="copy-button" type="button" data-copy="npm install">Copy</button>
+          </article>
+          <article class="command-card" data-category="node" data-search="npm run dev local server website">
+            <span class="tag">Node</span><h3><code>npm run dev</code></h3>
+            <p>Start a project's local development server.</p>
+            <button class="copy-button" type="button" data-copy="npm run dev">Copy</button>
+          </article>
+          <article class="command-card" data-category="deploy" data-search="vercel deploy preview website">
+            <span class="tag">Deploy</span><h3><code>vercel</code></h3>
+            <p>Create a preview deployment from the current folder.</p>
+            <button class="copy-button" type="button" data-copy="vercel">Copy</button>
+          </article>
+          <article class="command-card" data-category="deploy" data-search="vercel list deployments history">
+            <span class="tag">Deploy</span><h3><code>vercel list</code></h3>
+            <p>Show recent deployments and their current status.</p>
+            <button class="copy-button" type="button" data-copy="vercel list">Copy</button>
+          </article>
+        </div>
+        <p class="empty-state" id="empty-state" hidden>No matching commands. Try a shorter search.</p>
+      </section>
+
+      <section class="section split-section" id="practice" aria-labelledby="practice-title">
+        <div class="practice-copy">
+          <p class="eyebrow">Safe practice space</p>
+          <h2 id="practice-title">Type a command. See what comes back.</h2>
+          <p>
+            This simulator never touches your files. Try <code>help</code>, <code>pwd</code>,
+            <code>ls</code>, <code>git status</code>, or <code>clear</code>.
+          </p>
+          <p class="tip">Tip: the most useful information is often in the final few lines.</p>
+        </div>
+
+        <div class="practice-terminal" aria-label="Safe terminal simulator">
+          <div class="terminal-bar"><span>practice session</span><span class="safe-label">safe mode</span></div>
+          <div class="practice-output" id="practice-output" aria-live="polite">
+            <p class="output">Welcome to Command Canvas. Type <strong>help</strong> to begin.</p>
+          </div>
+          <form class="terminal-form" id="terminal-form">
+            <label for="terminal-input" class="prompt">$</label>
+            <input id="terminal-input" name="command" autocomplete="off" spellcheck="false" aria-label="Enter a practice command" />
+            <button type="submit">Run</button>
+          </form>
+        </div>
+      </section>
+
+      <section class="section progress-section" id="progress" aria-labelledby="progress-title">
+        <div class="section-heading progress-heading">
+          <div>
+            <p class="eyebrow">Your path</p>
+            <h2 id="progress-title">Build confidence one step at a time.</h2>
+          </div>
+          <p id="progress-count" class="progress-count">0 of 5 complete</p>
+        </div>
+        <div class="progress-track" aria-hidden="true"><span id="progress-bar"></span></div>
+        <div class="checklist" id="checklist">
+          <label><input type="checkbox" data-step="navigate" /><span><strong>Find your way around</strong><small>Use pwd, ls, and cd.</small></span></label>
+          <label><input type="checkbox" data-step="clone" /><span><strong>Clone a repository</strong><small>Bring a GitHub project onto your computer.</small></span></label>
+          <label><input type="checkbox" data-step="local" /><span><strong>Run it locally</strong><small>Open the site from a local server.</small></span></label>
+          <label><input type="checkbox" data-step="preview" /><span><strong>Create a preview</strong><small>Deploy a private preview with Vercel.</small></span></label>
+          <label><input type="checkbox" data-step="push" /><span><strong>Push a change</strong><small>Commit your work and send it to GitHub.</small></span></label>
+        </div>
+        <p class="saved-note">Progress is saved in this browser only.</p>
+      </section>
+    </main>
+
+    <footer>
+      <p><strong>Command Canvas</strong> · Built for steady, hands-on learning.</p>
+      <a href="#top">Back to top</a>
+    </footer>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>
