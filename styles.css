@@ -140,6 +140,22 @@ h3 { margin-bottom: 0.8rem; font-size: 1.35rem; }
 .cursor { display: inline-block; width: 9px; height: 1.1em; background: var(--cyan); vertical-align: -0.15em; animation: blink 1s steps(2) infinite; }
 @keyframes blink { 50% { opacity: 0; } }
 
+.safety-note {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  padding: 1.4rem 1.5rem;
+  border: 1px solid rgba(201, 255, 98, 0.45);
+  border-radius: 18px;
+  background: linear-gradient(110deg, rgba(201, 255, 98, 0.1), rgba(97, 231, 240, 0.06));
+}
+.safety-note .eyebrow { margin-bottom: 0.25rem; color: var(--lime); }
+.safety-note strong { font-size: 1.1rem; }
+.safety-commands { display: flex; flex-wrap: wrap; gap: 0.65rem; }
+.safety-commands code { padding: 0.55rem 0.75rem; border: 1px solid var(--border); border-radius: 9px; background: #050a0d; color: var(--cyan); }
+
 .section { padding: 7rem 0; border-top: 1px solid rgba(36, 64, 75, 0.68); }
 .section-heading { display: flex; align-items: end; justify-content: space-between; gap: 2rem; margin-bottom: 2rem; }
 .section-heading h2 { max-width: 750px; margin-bottom: 0; }
@@ -244,6 +260,7 @@ footer a { color: var(--text); font-weight: 750; }
   .search-field input { width: 100%; }
   .command-grid, .checklist { grid-template-columns: 1fr; }
   .split-section { gap: 2rem; }
+  .safety-note { align-items: flex-start; flex-direction: column; }
   footer { flex-direction: column; }
 }
 
